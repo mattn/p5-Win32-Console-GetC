@@ -7,4 +7,4 @@ all_pod_files_spelling_ok('lib');
 __DATA__
 mattn
 mattn.jp@gmail.com
-Win32::Async::Stdin
+Win32::Console::GetC

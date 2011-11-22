@@ -1,4 +1,4 @@
-package Win32::Async::Stdin;
+package Win32::Console::GetC;
 
 use strict;
 use warnings;
@@ -47,7 +47,7 @@ my $SetConsoleMode = Win32::API->new('kernel32.dll',
 ) or die ": $^E";
 
 my $inputs = &share([]);
-tie *STDIN, 'Win32::Async::Tied::Stdin', $inputs;
+tie *STDIN, 'Win32::Console::GetC::Tied', $inputs;
 
 my $handle = $GetStdHandle->Call(STD_INPUT_HANDLE);
 if ($GetFileType->Call($handle) eq FILE_TYPE_CHAR) {
@@ -70,8 +70,7 @@ if ($GetFileType->Call($handle) eq FILE_TYPE_CHAR) {
   }->detach;
 }
 
-package Win32::Async::Tied::Stdin;
-use strict;
+package Win32::Console::GetC::Tied;
 
 sub TIEHANDLE {
   my ($class, $ref) = @_;
@@ -89,15 +88,15 @@ __END__
 
 =head1 NAME
 
-Win32::Async::Stdin -
+Win32::Console::GetC - fixup getc() for windows.
 
 =head1 SYNOPSIS
 
-  use Win32::Async::Stdin;
+  use Win32::Console::GetC;
 
 =head1 DESCRIPTION
 
-Win32::Async::Stdin is
+Win32::Console::GetC fixup behavior of getc() for windows.
 
 =head1 AUTHOR
 

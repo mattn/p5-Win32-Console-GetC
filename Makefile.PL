@@ -1,6 +1,6 @@
 use inc::Module::Install;
-name 'Win32-Async-Stdin';
-all_from 'lib/Win32/Async/Stdin.pm';
+name 'Win32-Console-GetC';
+all_from 'lib/Win32/Console/GetC.pm';
 
 # requires '';
 
